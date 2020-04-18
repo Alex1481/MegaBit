@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,29 +42,30 @@ public class PeliculasController {
 		}
 		
 		@GetMapping("/create")
-		public String crear() {
+		public String crear(@ModelAttribute Pelicula pelicula, Model model) {
+			//model.addAttribute("generos", servicePeliculas.buscarGeneros());
 			return "peliculas/formPelicula";
 		}
 		
 		@PostMapping("/save")
-		public String guardar(Pelicula pelicula, BindingResult result, RedirectAttributes attributes,
+		public String guardar(@ModelAttribute Pelicula pelicula, BindingResult result, RedirectAttributes attributes,
 				@RequestParam("archivoImagen") MultipartFile multiPart, HttpServletRequest request
 				) {
 			
 			if (result.hasErrors()) {
-				System.out.println("Existieron errores");
+				//System.out.println("Existieron errores");
 				return "peliculas/formPelicula";
 			}
 			
 			if (!multiPart.isEmpty()) {
-				String nombreImagen = Utileria.guardarImagen(multiPart, request);
+				String nombreImagen = Utileria.guardarImagen(multiPart,request);
 				pelicula.setImagen(nombreImagen);
 			}
 			
 			servicePeliculas.insertar(pelicula);	
-	    	attributes.addFlashAttribute("mensaje", "La Pelicula fue guardada con Éxito.");		
+	    	attributes.addFlashAttribute("mensaje", "El registro fue guardado");		
 			return "redirect:/peliculas/index";
-		}	
+		}
 		
 		@InitBinder
 		public void initBinder(WebDataBinder binder) {

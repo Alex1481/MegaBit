@@ -2,13 +2,30 @@ package michael.dev.app.model;
 
 import java.util.Date;
 
+import michael.dev.app.model.Detalle;
+
 public class Pelicula {
 
 	private int id;
 	private String titulo;
 	private String genero;
-	private String imagen = "cinema.png";
+	private String imagen = "cinema.png"; // imagen por default	
 	private Date fechaEstreno;
+	
+	private Detalle detalle;
+	
+	public Pelicula() {
+		//System.out.println("Constructor Pelicula");
+	}
+	
+	public Detalle getDetalle() {
+		return detalle;
+	}
+	
+	public void setDetalle(Detalle detalle) {
+		this.detalle = detalle;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -39,11 +56,15 @@ public class Pelicula {
 	public void setFechaEstreno(Date fechaEstreno) {
 		this.fechaEstreno = fechaEstreno;
 	}
+
 	@Override
 	public String toString() {
 		return "Pelicula [id=" + id + ", titulo=" + titulo + ", genero=" + genero + ", imagen=" + imagen
-				+ ", fechaEstreno=" + fechaEstreno + "]";
+				+ ", fechaEstreno=" + fechaEstreno + ", detalle=" + detalle + "]";
 	}
+	
+	
+	
 	
 	
 }
