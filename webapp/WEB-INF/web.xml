@@ -11,10 +11,19 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>springmvc</servlet-name>
-		<!-- 
-		<url-pattern>*.html</url-pattern>
-		 -->
-		 <url-pattern>/</url-pattern>
+		<!-- <url-pattern>*.html</url-pattern> -->
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+	<!-- needed for ContextLoaderListener -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+	</context-param>
+	
+	<!-- Bootstrap the root web application context before sevlet initialization -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 
 </web-app>
