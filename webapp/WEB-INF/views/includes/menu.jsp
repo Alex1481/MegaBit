@@ -10,11 +10,15 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">My CineSite</a>
+			<a class="navbar-brand" href="#">MEGA BIT</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="#">Acerca</a></li>
+			</ul>
+
+			<!-- menú del lado derecho -->
+			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#">Login</a></li>
 			</ul>
 		</div>
