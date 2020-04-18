@@ -60,7 +60,7 @@ public class PeliculasController {
 			
 			System.out.println("Elementos en la lista despues de la insersion: " + servicePeliculas.buscarTodas().size());
 			
-			attributes.addFlashAttribute("mensaje", "El registro fue guardado");
+			attributes.addFlashAttribute("mensaje", "La Pelicula fue guardada ¡Exitosamente!");
 			
 			//return "peliculas/formPelicula";
 			return "redirect:/peliculas/index";
