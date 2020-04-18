@@ -115,7 +115,7 @@
         </div>
 
         <div class="page-header">
-          <h2 class="text text-center"><span class="label label-success">Noticias y novedades</span></h2>
+          <h2 class="text text-center"><span class="label label-success">NOVEDADES - PROMOCIONES</span></h2>
         </div>
 
         <div class="row">
