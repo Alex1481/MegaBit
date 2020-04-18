@@ -41,9 +41,7 @@
                 <th>Titulo</th>
                 <th>Genero</th>
                 <th>Clasificacion</th>
-                <th>Duracion</th>
                 <th>Fecha Estreno</th>
-                <th>Estatus</th>
                 <th>Opciones</th>
             </tr>
             
@@ -51,19 +49,7 @@
 			  <tr>
 				<td>${pelicula.titulo}</td>
 				<td>${pelicula.genero}</td>
-				<td>${pelicula.clasificacion}</td>
-				<td>${pelicula.duracion} min.</td>
 				<td><fmt:formatDate pattern="dd-MM-yyyy" value="${pelicula.fechaEstreno}" />
-				</td>
-					<c:choose>
-						<c:when test="${pelicula.estatus eq 'Activa'}">
-							<td><span class="label label-success">${pelicula.estatus}</span></td>
-						</c:when>
-						<c:otherwise>
-							<td><span class="label label-danger">${pelicula.estatus}</span></td>
-						</c:otherwise>
-					</c:choose>
-				<td>
 					<a href="#" class="btn btn-success btn-sm" role="button" title="Edit"><span class="glyphicon glyphicon-pencil"></span></a>
 					<a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar"><span class="glyphicon glyphicon-trash"></span></a>
 				</td>

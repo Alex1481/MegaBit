@@ -48,31 +48,15 @@
           </div>
           <div class="col-sm-3">
             <div class="form-group">
-              <label for="duracion">Duracion</label>
-              <input type="text" class="form-control" name="duracion" id="duracion" required="required" />
-            </div>  
-          </div>
-          <div class="col-sm-3">
-            <div class="form-group">
-              <label for="clasificacion" class="control-label">Clasificacion</label>              
-              <select id="clasificacion" name="clasificacion" class="form-control">
-                <option value="A">Clasificacion A</option>
-                <option value="B">Clasificacion B</option>
-                <option value="C">Clasificacion C</option>                  
-              </select>             
-            </div> 
-          </div>
-          <div class="col-sm-3">
-            <div class="form-group">
               <label for="genero" class="control-label">Genero</label>              
               <select id="genero" name="genero" class="form-control">
                 <option value="Accion">Accion</option>
                 <option value="Aventura">Aventura </option>
-                <option value="Clasicas">Clasicas</option>                  
-                <option value="Comedia Romantica">Comedia Romantica</option>                  
+                <option value="Clasicas">Clasicas </option>                  
+                <option value="Comedia Romantica">Cristianas</option>                  
                 <option value="Drama">Drama</option>                  
                 <option value="Terror">Terror</option>                  
-                <option value="Infantil">Infantil</option>                  
+                <option value="Infantil">Infantiles</option>                  
                 <option value="Accion y Aventura">Accion y Aventura</option>                  
                 <option value="Romantica">Romantica</option>                  
               </select>             
@@ -80,16 +64,7 @@
           </div>         
         </div>
 
-        <div class="row">
-          <div class="col-sm-3">
-            <div class="form-group">
-              <label for="estatus" class="control-label">Estatus</label>              
-              <select id="genero" name="estatus" class="form-control">
-                <option value="Activa">Activa</option>
-                <option value="Inactiva">Inactiva</option>               
-              </select>             
-            </div> 
-          </div>     
+        <div class="row">    
           <div class="col-sm-3">
             <div class="form-group">
               <label for="fechaEstreno">Fecha Estreno</label>             
