@@ -23,7 +23,7 @@
     
     <div class="container theme-showcase" role="main">
 
-      <h3>Listado de Peliculas</h3>
+      <h3 align="center">Listado de Peliculas</h3>
       
       <c:if test="${mensaje!=null }">
       	
@@ -33,29 +33,34 @@
       
       
             
-      <a href="${urlCreate}" class="btn btn-success" role="button" title="Nueva Pelicula" >Nueva</a><br><br>
+      <a href="${urlCreate}" class="btn btn-success btn-lg" role="button" title="Nueva Pelicula" >Nueva Pelicula</a><br><br>
 	
       <div class="table-responsive">
         <table class="table table-hover table-striped table-bordered">
+        	<thead class="thead-dark">
             <tr>
+            	<th>No.</th>
                 <th>Titulo</th>
                 <th>Genero</th>
-                <th>Clasificacion</th>
                 <th>Fecha Estreno</th>
                 <th>Opciones</th>
             </tr>
-            
+            </thead>
+            <tbody>
             <c:forEach var="pelicula" items="${peliculas}">
 			  <tr>
+			  	<td>${pelicula.id}</td>
 				<td>${pelicula.titulo}</td>
-				<td>${pelicula.genero}</td>
-				<td><fmt:formatDate pattern="dd-MM-yyyy" value="${pelicula.fechaEstreno}" />
+				<td align="center">${pelicula.genero}</td>
+				<td align="center"><fmt:formatDate pattern="dd-MM-yyyy" value="${pelicula.fechaEstreno}" />
+				</td>
+				<td align="center">
 					<a href="#" class="btn btn-success btn-sm" role="button" title="Edit"><span class="glyphicon glyphicon-pencil"></span></a>
 					<a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar"><span class="glyphicon glyphicon-trash"></span></a>
 				</td>
 			  </tr>
 			</c:forEach>
-            
+            </tbody>
         </table>
       </div>
           

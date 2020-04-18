@@ -24,7 +24,7 @@
     <div class="container theme-showcase" role="main">
 
       <div class="page-header">
-				<h3 class="blog-title"><span class="label label-success">Datos de la Pelicula</span></h3>
+				<h3 align="center" class="blog-title"><span class="label label-success">Datos de la Pelicula</span></h3>
       </div>
 
 	  <spring:hasBindErrors name="pelicula">
@@ -40,13 +40,13 @@
 
 	   <form action="${urlForm}" method="post">
         <div class="row">
-          <div class="col-sm-3">
+          <div class="col-sm-8">
             <div class="form-group">
               <label for="titulo">Título</label>
               <input type="text" class="form-control" name="titulo" id="titulo" required="required" />
             </div>  
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-4">
             <div class="form-group">
               <label for="genero" class="control-label">Genero</label>              
               <select id="genero" name="genero" class="form-control">
@@ -65,7 +65,7 @@
         </div>
 
         <div class="row">    
-          <div class="col-sm-3">
+          <div class="col-sm-6">
             <div class="form-group">
               <label for="fechaEstreno">Fecha Estreno</label>             
               <input type="text" class="form-control" name="fechaEstreno" id="fechaEstreno" required="required" />
