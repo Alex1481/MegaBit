@@ -8,7 +8,7 @@ public class Banner {
 	private String titulo;
 	private Date fecha; // Fecha de Publicacion del Banner
 	private String archivo; // atributo para guardar el nombre de la imagen
-	private String estatus;
+	private String estatus; 
 	
 	/**
 	 * Constructor de la clase

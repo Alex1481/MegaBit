@@ -33,30 +33,65 @@
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			<!-- Indicators -->
 			<ol class="carousel-indicators">
-				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-				<li data-target="#myCarousel" data-slide-to="1"></li>
-				<li data-target="#myCarousel" data-slide-to="2"></li>
-				<li data-target="#myCarousel" data-slide-to="3"></li>
+
+				<c:forEach items="${banners}" var="banner" varStatus="loop">
+					<c:choose>
+						<c:when test="${loop.index==0}">
+							<li data-target="#myCarousel" data-slide-to="${loop.index}"
+								class="active"></li>
+						</c:when>
+						<c:otherwise>
+							<li data-target="#myCarousel" data-slide-to="${loop.index}"></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+				<%-- Asi estaba de forma Estatica
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>         
+          <li data-target="#myCarousel" data-slide-to="3"></li>	
+           --%>
+
 			</ol>
+
 			<!-- Image Size 1140 x 250 -->
 			<div class="carousel-inner" role="listbox">
-				<div class="item active">
-					<img src="${urlPublic}/images/slide1.jpg" alt="Slide"
-						title="Some text">
-				</div>
-				<div class="item">
-					<img src="${urlPublic}/images/slide2.jpg" alt="Slide"
-						title="Some text">
-				</div>
-				<div class="item">
-					<img src="${urlPublic}/images/slide3.jpg" alt="Slide"
-						title="Some text">
-				</div>
-				<div class="item">
-					<img src="${urlPublic}/images/slide4.jpg" alt="Slide"
-						title="Some text">
-				</div>
+
+				<c:forEach items="${banners}" var="banner" varStatus="loop">
+					<c:choose>
+						<c:when test="${loop.index==0}">
+							<div class="item active">
+								<img src="${urlPublic}/images/${banner.archivo}"
+									alt="${banner.titulo}" title="${banner.titulo}">
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="item">
+								<img src="${urlPublic}/images/${banner.archivo}"
+									alt="${banner.titulo}" title="${banner.titulo}">
+							</div>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+				<%-- Asi estaba de forma Estatica     
+	          <div class="item active">         
+	            <img src="${urlPublic}/images/slide1.jpg" alt="Slide" title="Some text" >
+	          </div>
+	          <div class="item">         
+	            <img src="${urlPublic}/images/slide2.jpg" alt="Slide" title="Some text" >
+	          </div>
+	          <div class="item">         
+	            <img src="${urlPublic}/images/slide3.jpg" alt="Slide" title="Some text" >
+	          </div>
+	          <div class="item">         
+	            <img src="${urlPublic}/images/slide4.jpg" alt="Slide" title="Some text" >
+	          </div>
+           --%>
+
 			</div>
+
 			<a class="left carousel-control" href="#myCarousel" role="button"
 				data-slide="prev"> <span
 				class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -66,6 +101,7 @@
 				class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 				<span class="sr-only">Next</span>
 			</a>
+
 		</div>
 		<!-- /.carousel -->
 
@@ -109,7 +145,11 @@
 						<h4>
 							<span class="label label-default">${pelicula.genero }</span>
 						</h4>
-						<p><a class="btn btn-sm btn-primary" href="${urlRoot}detalle/${pelicula.id }/${fechaBusqueda}" role="button">Ver Tráiler y Más&raquo;</a></p>
+						<p>
+							<a class="btn btn-sm btn-primary"
+								href="${urlRoot}detalle/${pelicula.id }/${fechaBusqueda}"
+								role="button">Ver Tráiler y Más&raquo;</a>
+						</p>
 					</div>
 				</c:forEach>
 
@@ -137,14 +177,14 @@
 							La novela de Cynthia Swanson <span style="color: #0000ff;"><strong>The
 									Bookseller</strong></span> ser&aacute; llevada al cine con <span
 								style="color: #0000ff;">Julia Roberts (Los Pitufos: La
-								aldea Escondida)</span> como protagonista.<br />
-							<br />La historia est&aacute; ambientada en los sesenta y su
-							protagonista es una mujer soltera, Kitty Miller, que lleva una
-							librer&iacute;a. Sue&ntilde;a con una vida alternativa en la que
-							ha encontrado el amor y est&aacute; casada y con hijos, pero la
-							l&iacute;nea que separa realidad y ficci&oacute;n comienza a
-							estar demasiado dispersa para que la distinga.<br />
-							<br />Seg&uacute;n informa <span style="color: #ff0000;"><strong>Moviehole</strong></span>
+								aldea Escondida)</span> como protagonista.<br /> <br />La historia
+							est&aacute; ambientada en los sesenta y su protagonista es una
+							mujer soltera, Kitty Miller, que lleva una librer&iacute;a.
+							Sue&ntilde;a con una vida alternativa en la que ha encontrado el
+							amor y est&aacute; casada y con hijos, pero la l&iacute;nea que
+							separa realidad y ficci&oacute;n comienza a estar demasiado
+							dispersa para que la distinga.<br /> <br />Seg&uacute;n informa
+							<span style="color: #ff0000;"><strong>Moviehole</strong></span>
 							Roberts tambi&eacute;n producir&aacute; la pel&iacute;cula junto
 							a Lisa Gillan y Marisa Yeres Hill.
 						</p>
