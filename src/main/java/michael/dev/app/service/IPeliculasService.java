@@ -6,4 +6,5 @@ import michael.dev.app.model.Pelicula;
 
 public interface IPeliculasService {
 	List<Pelicula> buscarTodas();
+	Pelicula buscaPorId(int idPelicula);
 }

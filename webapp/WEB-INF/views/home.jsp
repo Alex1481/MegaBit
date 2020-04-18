@@ -64,15 +64,21 @@
 
       <div class="row page-header">          
         <div class="col-lg-12">         
-          <h1 class="text text-center"><span class="label label-success">LISTADO DE PELICULAS</span></h1>          
-          <form class="form-inline" action="#" method="post">
+          <h2 class="text text-center"><span class="label label-success">LISTADO DE PELICULAS</span></h2>          
+          <form class="form-inline" action="${urlRoot}search" method="post">
             <div class="form-group">
               <label for="fecha">Fecha: </label>
               <select id="fecha" name="fecha" class="form-control">
-                <option value="01-05-2017">01-05-2017</option>
-                <option value="02-05-2017">02-05-2017</option>
-                <option value="03-05-2017">03-05-2017</option>
-                <option value="04-05-2017">04-05-2017</option>                
+               <c:forEach items="${fechas}" var="fecha">
+                  <c:choose>
+					<c:when test="${fechaBusqueda eq fecha}" >
+					     <option value="${fecha}" selected>${fecha}</option>	
+					</c:when>
+					<c:otherwise>
+					     <option value="${fecha}">${fecha}</option>	
+					</c:otherwise>
+				   </c:choose>	
+               </c:forEach>             
               </select>
             </div>            
             <button type="submit" class="btn btn-primary">Filtrar</button>
@@ -91,6 +97,7 @@
             <button type="submit" class="btn btn-primary">Filtrar</button>
             
             <!--FIN DEL FILTRO DEL GENERO -->
+            
           </form>
         </div>
       </div>
@@ -99,18 +106,18 @@
       <div class="container marketing">
 
         <div class="row">
-        
+
 		<c:forEach items="${peliculas }" var="pelicula">
           <div class="col-xs-12 col-sm-6 col-md-3">
-            <img class="img-rounded" src="${urlPublic}/images/${pelicula.imagen }" alt="Generic placeholder image" width="150" height="200">
+            <img class="img-rounded" src="${urlPublic}/images/${pelicula.imagen}" alt="Generic placeholder image" width="150" height="200">
             <h4>${pelicula.titulo }</h4>
             <h4>
               <span class="label label-default">${pelicula.genero }</span>
             </h4>         
-            <p><a class="btn btn-sm btn-primary" href="#" role="button">Ver Tráiler y Más &raquo;</a></p>
+            <p><a class="btn btn-sm btn-primary" href="${urlRoot}detalle/${pelicula.id }/${fechaBusqueda}" role="button">Ver Tráiler y Más &raquo;</a></p>             
           </div>
-		</c:forEach>
-
+	    </c:forEach>
+          
 
         </div>
 

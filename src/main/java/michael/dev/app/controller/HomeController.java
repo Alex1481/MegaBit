@@ -1,99 +1,65 @@
 package michael.dev.app.controller;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.LinkedList;
+import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import michael.dev.app.model.Pelicula;
+import michael.dev.app.service.IPeliculasService;
+import michael.dev.app.util.Utileria;
 
 @Controller
 public class HomeController {
+	
+	@Autowired
+	private IPeliculasService servicePeliculas;
+	
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
-	
-	@RequestMapping(value="/home", method=RequestMethod.GET)
-	public String goHome() {
-		return"home";
-	}
-	
-	@RequestMapping(value="/", method=RequestMethod.GET)
-	public String mostrrPrincipal(Model model) {
+	@RequestMapping(value="/search", method=RequestMethod.POST)
+	public String buscar(@RequestParam("fecha") String fecha, Model model){
 		
-		List<Pelicula> peliculas = getLista();
+		List<String> listaFechas = Utileria.getNextDays(4);
+		
+		List<Pelicula> peliculas = servicePeliculas.buscarTodas();
+		model.addAttribute("fechas", listaFechas);
+		model.addAttribute("fechaBusqueda", fecha);
 		model.addAttribute("peliculas", peliculas);
 		
+		System.out.println("Buscando todas las peliculas que se estrenaron en la fecha: " + fecha);
 		return "home";
 	}
 	
-	@RequestMapping(value="detalle")
-	public String mostrarDetalle(Model model) {
-		String tituloPelicula = "Rapidos y Furiosos";;
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public String mostrarPrincipal(Model model) {
+
+		List<String> listaFechas = Utileria.getNextDays(4);
 		
-		model.addAttribute("titulo", tituloPelicula);
-		
-		return "detalle";
-		
+		List<Pelicula> peliculas = servicePeliculas.buscarTodas();
+		model.addAttribute("fechas", listaFechas);
+		model.addAttribute("fechaBusqueda", dateFormat.format(new Date()));
+		model.addAttribute("peliculas", peliculas);
+
+		return "home";
 	}
 	
-	// Metodo para generar una lista de Objetos de Modelo (Pelicula)
-	private List<Pelicula> getLista() {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-		List<Pelicula> lista = null;
-		try {
-			lista = new LinkedList<>();
-
-			Pelicula pelicula1 = new Pelicula();
-			pelicula1.setId(1);
-			pelicula1.setTitulo("Power Rangers");
-			pelicula1.setGenero("Aventura");
-			pelicula1.setFechaEstreno(formatter.parse("02-05-2017"));
-			// imagen="cinema.png"
-
-			Pelicula pelicula2 = new Pelicula();
-			pelicula2.setId(2);
-			pelicula2.setTitulo("La bella y la bestia");
-			pelicula2.setGenero("Infantil");
-			pelicula2.setFechaEstreno(formatter.parse("20-05-2017"));
-			pelicula2.setImagen("bella.png"); // Nombre del archivo de imagen
-
-			Pelicula pelicula3 = new Pelicula();
-			pelicula3.setId(3);
-			pelicula3.setTitulo("Contratiempo");
-			pelicula3.setGenero("Thriller");
-			pelicula3.setFechaEstreno(formatter.parse("28-05-2017"));
-			pelicula3.setImagen("contratiempo.png"); // Nombre del archivo de imagen
-			 
-			Pelicula pelicula4 = new Pelicula();
-			pelicula4.setId(4);
-			pelicula4.setTitulo("Kong La Isla Calavera");
-			pelicula4.setGenero("Accion y Aventura");
-			pelicula4.setFechaEstreno(formatter.parse("06-06-2017"));
-			pelicula4.setImagen("kong.png"); // Nombre del archivo de imagen
+	@RequestMapping(value = "/detalle/{id}/{fecha}",method=RequestMethod.GET)		
+	public String mostrarDetalle(Model model,@PathVariable("id") int idPelicula, @PathVariable("fecha") String fecha) {
 			
-			Pelicula pelicula5 = new Pelicula();
-			pelicula5.setId(5);
-			pelicula5.setTitulo("Life: Vida Inteligente");
-			pelicula5.setGenero("Drama");
-			pelicula5.setFechaEstreno(formatter.parse("10-06-2017"));
-			pelicula5.setImagen("estreno5.png"); // Nombre del archivo de imagen
-
-			
-			// Agregamos los objetos Pelicula a la lista
-			lista.add(pelicula1);
-			lista.add(pelicula2);
-			lista.add(pelicula3);
-			lista.add(pelicula4);
-			lista.add(pelicula5);
-
-			return lista;
-		} catch (ParseException e) {
-			System.out.println("Error: " + e.getMessage());
-			return null;
-		}
+		System.out.println("Buscando peliculas estrenadas: " + idPelicula);
+		System.out.println("Fecha de Estreno: " + fecha);
+		model.addAttribute("pelicula", servicePeliculas.buscaPorId(idPelicula));
+		// TODO - Buscar en la base de datos los horarios.		
+		
+		return "detalle";
 	}
+	
 }

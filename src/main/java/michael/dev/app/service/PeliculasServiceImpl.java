@@ -5,13 +5,20 @@ import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import michael.dev.app.model.Pelicula;
 
+@Service
 public class PeliculasServiceImpl implements IPeliculasService {
 
+	private List<Pelicula> lista = null;
+	
 	public PeliculasServiceImpl() {
+		System.out.println("Creando una instancia de la clase PeliculasServiceImpl");
+		
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-		List<Pelicula> lista = null;
+		
 		try {
 			lista = new LinkedList<>();
 
@@ -66,7 +73,17 @@ public class PeliculasServiceImpl implements IPeliculasService {
 	
 	@Override
 	public List<Pelicula> buscarTodas() {
-		// TODO Auto-generated method stub
+		return lista;
+	}
+
+
+	@Override
+	public Pelicula buscaPorId(int idPelicula) {
+		for (Pelicula p : lista){
+			if (p.getId() == idPelicula){
+				return p;				
+			}
+		}
 		return null;
 	}
 
