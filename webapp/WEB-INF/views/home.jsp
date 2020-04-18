@@ -64,7 +64,7 @@
 
       <div class="row page-header">          
         <div class="col-lg-12">         
-          <h2 class="text text-center"><span class="label label-success">EN CARTELERA</span></h2>          
+          <h1 class="text text-center"><span class="label label-success">LISTADO DE PELICULAS</span></h1>          
           <form class="form-inline" action="#" method="post">
             <div class="form-group">
               <label for="fecha">Fecha: </label>
@@ -76,6 +76,21 @@
               </select>
             </div>            
             <button type="submit" class="btn btn-primary">Filtrar</button>
+            
+            <!-- FILTRO DEL GENERO -->
+            <!-- FILTRO DEL GENERO -->
+            <div class="form-group">
+              <label for="genero">Género: </label>
+              <select id="genero" name="fecha" class="form-control">
+                <option value="Comedia">Comedia</option>
+                <option value="Terror">Terror</option>
+                <option value="Cristianas">Cristianas</option>
+                <option value="Accion">Acción</option>                
+              </select>
+            </div>            
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+            
+            <!--FIN DEL FILTRO DEL GENERO -->
           </form>
         </div>
       </div>
