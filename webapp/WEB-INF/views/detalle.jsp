@@ -54,16 +54,16 @@
 
 
 				<div class="container">
+						<div class="col-sm-7">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 align="center" class="panel-title">Trailer</h3>
+								<h3 class="panel-title">Trailer</h3>
 							</div>
 							<div class="panel-body">
-								<p align="center"><iframe width="640" height="400" 
-												src="${pelicula.detalle.trailer}" >                          
-								</iframe><p>
+								<iframe width="100%" height="315" src="${pelicula.detalle.trailer}" > </iframe>
 							</div>
-						</div>            
+						</div>           
+					</div>           
 				</div>
 
 			</div><!-- /.container -->
@@ -79,5 +79,6 @@
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
 		<script src="${urlPublic}/bootstrap/js/bootstrap.min.js"></script> 
+		<script src="//example.com/script.js" type="text/javascript"></script>
 	</body>
 </html>
