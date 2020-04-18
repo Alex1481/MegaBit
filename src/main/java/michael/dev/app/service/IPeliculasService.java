@@ -5,6 +5,7 @@ import java.util.List;
 import michael.dev.app.model.Pelicula;
 
 public interface IPeliculasService {
+	void insertar(Pelicula pelicula); 
 	List<Pelicula> buscarTodas();
-	Pelicula buscaPorId(int idPelicula);
+	Pelicula buscarPorId(int idPelicula);
 }

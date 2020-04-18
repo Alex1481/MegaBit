@@ -14,9 +14,8 @@ public class PeliculasServiceImpl implements IPeliculasService {
 
 	private List<Pelicula> lista = null;
 	
-	public PeliculasServiceImpl() {
-		System.out.println("Creando una instancia de la clase PeliculasServiceImpl");
-		
+	public PeliculasServiceImpl(){
+				
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 		
 		try {
@@ -28,6 +27,7 @@ public class PeliculasServiceImpl implements IPeliculasService {
 			pelicula1.setGenero("Aventura");
 			pelicula1.setFechaEstreno(formatter.parse("02-05-2017"));
 			// imagen="cinema.png"
+			// estatus="Activa"
 
 			Pelicula pelicula2 = new Pelicula();
 			pelicula2.setId(2);
@@ -42,7 +42,7 @@ public class PeliculasServiceImpl implements IPeliculasService {
 			pelicula3.setGenero("Thriller");
 			pelicula3.setFechaEstreno(formatter.parse("28-05-2017"));
 			pelicula3.setImagen("contratiempo.png"); // Nombre del archivo de imagen
-			 
+
 			Pelicula pelicula4 = new Pelicula();
 			pelicula4.setId(4);
 			pelicula4.setTitulo("Kong La Isla Calavera");
@@ -56,7 +56,6 @@ public class PeliculasServiceImpl implements IPeliculasService {
 			pelicula5.setGenero("Drama");
 			pelicula5.setFechaEstreno(formatter.parse("10-06-2017"));
 			pelicula5.setImagen("estreno5.png"); // Nombre del archivo de imagen
-
 			
 			// Agregamos los objetos Pelicula a la lista
 			lista.add(pelicula1);
@@ -65,8 +64,10 @@ public class PeliculasServiceImpl implements IPeliculasService {
 			lista.add(pelicula4);
 			lista.add(pelicula5);
 
+			
 		} catch (ParseException e) {
 			System.out.println("Error: " + e.getMessage());
+			
 		}
 	}
 	
@@ -78,13 +79,19 @@ public class PeliculasServiceImpl implements IPeliculasService {
 
 
 	@Override
-	public Pelicula buscaPorId(int idPelicula) {
+	public Pelicula buscarPorId(int idPelicula) {
 		for (Pelicula p : lista){
 			if (p.getId() == idPelicula){
 				return p;				
 			}
 		}
 		return null;
+	}
+
+
+	@Override
+	public void insertar(Pelicula pelicula) {
+		lista.add(pelicula);
 	}
 
 	

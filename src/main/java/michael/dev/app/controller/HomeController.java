@@ -33,12 +33,11 @@ public class HomeController {
 		model.addAttribute("fechas", listaFechas);
 		model.addAttribute("fechaBusqueda", fecha);
 		model.addAttribute("peliculas", peliculas);
-		
-		System.out.println("Buscando todas las peliculas que se estrenaron en la fecha: " + fecha);
+				
 		return "home";
 	}
-	
-	@RequestMapping(value="/", method=RequestMethod.GET)
+		
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String mostrarPrincipal(Model model) {
 
 		List<String> listaFechas = Utileria.getNextDays(4);
@@ -50,16 +49,15 @@ public class HomeController {
 
 		return "home";
 	}
-	
-	@RequestMapping(value = "/detalle/{id}/{fecha}",method=RequestMethod.GET)		
+
+	@RequestMapping(value = "/detail/{id}/{fecha}",method=RequestMethod.GET)		
 	public String mostrarDetalle(Model model,@PathVariable("id") int idPelicula, @PathVariable("fecha") String fecha) {
-			
-		System.out.println("Buscando peliculas estrenadas: " + idPelicula);
-		System.out.println("Fecha de Estreno: " + fecha);
-		model.addAttribute("pelicula", servicePeliculas.buscaPorId(idPelicula));
+					
+		model.addAttribute("pelicula", servicePeliculas.buscarPorId(idPelicula));
 		// TODO - Buscar en la base de datos los horarios.		
 		
 		return "detalle";
 	}
+
 	
 }
