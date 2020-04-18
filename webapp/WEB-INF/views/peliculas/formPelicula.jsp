@@ -25,11 +25,20 @@
 
       <div class="page-header">
 				<h3 align="center" class="blog-title"><span class="label label-success">Datos de la Pelicula</span></h3>
-				
+		<spring:hasBindErrors name="pelicula">
+			<div class='alert alert-danger' role='alert'>
+				Por favor corrija los siguientes errores:
+				<ul>
+					<c:forEach var="error" items="${errors.allErrors}">
+						<li><spring:message message="${error}" /></li>
+					</c:forEach>
+				</ul>
+			</div>
+		</spring:hasBindErrors>
 				      	
       </div>
 
-	   <form action="${urlForm}" method="post">
+	   <form action="${urlForm}" method="post" enctype="multipart/form-data">
         <div class="row">
           <div class="col-sm-8">
             <div class="form-group">
@@ -110,17 +119,6 @@
         <button type="submit" class="btn btn-danger" >Guardar</button>
       </form> 
       
-      	  <spring:hasBindErrors name="pelicula">
-			<div class='alert alert-danger' role='alert'>
-				Por favor corrija los siguientes errores:
-				<ul>
-					<c:forEach var="error" items="${errors.allErrors}">
-						<li><spring:message message="${error}" /></li>
-					</c:forEach>
-				</ul>
-			</div>
-		</spring:hasBindErrors>
-
       <hr class="featurette-divider">
 
       <jsp:include page="../includes/footer.jsp" />

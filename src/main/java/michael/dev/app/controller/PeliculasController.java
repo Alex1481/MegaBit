@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -14,10 +16,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import michael.dev.app.model.Pelicula;
 import michael.dev.app.service.IPeliculasService;
+import michael.dev.app.util.Utileria;
 
 
 @Controller
@@ -41,30 +46,24 @@ public class PeliculasController {
 		}
 		
 		@PostMapping("/save")
-		public String guardar(Pelicula pelicula, BindingResult result, RedirectAttributes attributes) {
+		public String guardar(Pelicula pelicula, BindingResult result, RedirectAttributes attributes,
+				@RequestParam("archivoImagen") MultipartFile multiPart, HttpServletRequest request
+				) {
 			
 			if (result.hasErrors()) {
 				System.out.println("Existieron errores");
 				return "peliculas/formPelicula";
 			}
 			
-//			for(ObjectError error : result.getAllErrors()) {
-//				System.out.println(error.getDefaultMessage());
-//			}
+			if (!multiPart.isEmpty()) {
+				String nombreImagen = Utileria.guardarImagen(multiPart, request);
+				pelicula.setImagen(nombreImagen);
+			}
 			
-			System.out.println("Recibiendo objeto pelicula: " +pelicula);
-			
-			System.out.println("Elementos en la lista antes de la insersion: " + servicePeliculas.buscarTodas().size());
-			
-			servicePeliculas.insertar(pelicula);
-			
-			System.out.println("Elementos en la lista despues de la insersion: " + servicePeliculas.buscarTodas().size());
-			
-			attributes.addFlashAttribute("mensaje", "La Pelicula fue guardada ¡Exitosamente!");
-			
-			//return "peliculas/formPelicula";
+			servicePeliculas.insertar(pelicula);	
+	    	attributes.addFlashAttribute("mensaje", "La Pelicula fue guardada con Éxito.");		
 			return "redirect:/peliculas/index";
-		}
+		}	
 		
 		@InitBinder
 		public void initBinder(WebDataBinder binder) {

@@ -37,7 +37,7 @@
 	
       <div class="table-responsive">
         <table class="table table-hover table-striped table-bordered">
-        	<thead class="thead-dark">
+        	<thead>
             <tr>
             	<th>No.</th>
                 <th>Titulo</th>
@@ -46,6 +46,7 @@
                 <th>Opciones</th>
             </tr>
             </thead>
+            
             <tbody>
             <c:forEach var="pelicula" items="${peliculas}">
 			  <tr>
