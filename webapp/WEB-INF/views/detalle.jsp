@@ -40,9 +40,7 @@
 							</div>
 							<div class="panel-body">                           
 								<p>
-									Título Original : ${pelicula.titulo } <br>
-									Actores :  <br>
-									Director:  <br>                  
+									Título Original : ${pelicula.titulo } <br>                 
 									Género: ${pelicula.genero } <br>                  
 									Fecha Estreno: ${pelicula.fechaEstreno }                  
 								</p> 
@@ -62,7 +60,7 @@
 							</div>
 							<div class="panel-body">
 								<p align="center"><iframe width="640" height="400" 
-												src="https://www.youtube.com/embed/HwDr7ff5GD4" >                          
+												src="${pelicula.detalle.trailer}" >                          
 								</iframe><p>
 							</div>
 						</div>            
