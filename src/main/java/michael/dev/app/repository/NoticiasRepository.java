@@ -13,6 +13,7 @@ import michael.dev.app.model.Noticia;
 //public interface NoticiasRepository extends CrudRepository<Noticia, Integer> {
 	public interface NoticiasRepository extends JpaRepository<Noticia, Integer> {
 
+	// VIDEO 123 MUESTRA EJEMPLOS DE LOS QUERYS
 	// select * from Noticias
 	// List<Noticia> findyByEstatus (String status);
 	
