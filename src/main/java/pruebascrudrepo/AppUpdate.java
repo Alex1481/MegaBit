@@ -1,4 +1,4 @@
-package pruebasjpa;
+package pruebascrudrepo;
 
 import java.util.Optional;
 
@@ -7,15 +7,25 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import michael.dev.app.model.Noticia;
 import michael.dev.app.repository.NoticiasRepository;
 
-public class AppRead {
+public class AppUpdate {
 
 	public static void main(String[] args) {
+		
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
 		NoticiasRepository repo = context.getBean("noticiasRepository", NoticiasRepository.class);
 		
-		// Operacion CRUD - Read [metodo findById del repositorio]
-		Optional<Noticia> noticia = repo.findById(1);
-		System.out.println(noticia.get());
+		// Operacion CRUD - Update [metodo save del repositorio]
+		
+		// 1. Primero buscamos la entidad que vamos a modificar (findById)
+		Optional<Noticia> optional = repo.findById(1);
+		
+		// 2. Modificamos la entidad y la guardamos
+		if (optional.isPresent()) {
+			Noticia noticia = optional.get();
+			noticia.setEstatus("Inactiva");
+			repo.save(noticia);
+			
+		}	
 		
 		context.close();
 	}

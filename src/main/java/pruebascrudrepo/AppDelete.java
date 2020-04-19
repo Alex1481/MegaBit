@@ -1,4 +1,4 @@
-package pruebasjpa;
+package pruebascrudrepo;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import michael.dev.app.repository.NoticiasRepository;

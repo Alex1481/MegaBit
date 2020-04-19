@@ -1,19 +1,20 @@
-package pruebasjpa;
+package pruebascrudrepo;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import michael.dev.app.repository.NoticiasRepository;
 
-public class AppExists {
+public class AppCount {
 
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
 		NoticiasRepository repo = context.getBean("noticiasRepository", NoticiasRepository.class);
-		
-		// Método para verificar si una entidad existe en la base de datos [metodo existsById del repositorio]
-		int idNoticia=100;
-		System.out.println(repo.existsById(idNoticia));
+			
+		// Contar numeros de registros en la tabla [metodo count() del repositorio]
+		long num = repo.count();
+		System.out.println("Se encontraron: "+ num + " registros.");
 		
 		context.close();
+
 	}
 
 }
