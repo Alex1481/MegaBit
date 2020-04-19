@@ -8,6 +8,7 @@ public class AppConexion {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
 		
 		context.close();
+
 	}
 
 }
