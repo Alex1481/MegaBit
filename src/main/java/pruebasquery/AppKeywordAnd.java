@@ -15,7 +15,7 @@ public class AppKeywordAnd {
 		
 		// Ejemplo Keyword And
 		/*
-		List<Noticia> lista = repo.findByGenero("Comedia");
+		List<Noticia> lista = repo.findByGenero(String genero);
 		
 		for (Noticia n: lista) {
 			System.out.println(n);
