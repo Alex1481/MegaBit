@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -45,6 +47,13 @@ public class PeliculasController {
 			return "peliculas/listPeliculas";
 		}
 		
+		@GetMapping(value = "/indexPaginate")
+		public String mostrarIndexPaginado(Model model, Pageable page) {
+			Page<Pelicula> lista = servicePeliculas.buscarTodas(page);
+			model.addAttribute("peliculas", lista);
+			return "peliculas/listPeliculas";
+		}
+		
 		@GetMapping("/create")
 		public String crear(@ModelAttribute Pelicula pelicula, Model model) {
 		
@@ -57,22 +66,26 @@ public class PeliculasController {
 				) {
 			
 			if (result.hasErrors()) {
-				//System.out.println("Existieron errores");
+				System.out.println("Existieron errores");
 				return "peliculas/formPelicula";
 			}
 			
 			if (!multiPart.isEmpty()) {
 				String nombreImagen = Utileria.guardarImagen(multiPart,request);
-				pelicula.setImagen(nombreImagen);
+				if (nombreImagen!=null){ // La imagen si se subio				
+					pelicula.setImagen(nombreImagen); // Asignamos el nombre de la imagen
+				}	
 			}
 			
-			System.out.println("Antes" + pelicula.getDetalle());
-			serviceDetalles.insertar(pelicula.getDetalle());
-			System.out.println("Despues" + pelicula.getDetalle());
-			
-			servicePeliculas.insertar(pelicula);	
-	    	attributes.addFlashAttribute("mensaje", "La Pelicula fue guardada con Éxito");		
-			return "redirect:/peliculas/index";
+			// Primero insertamos el detalle
+		    serviceDetalles.insertar(pelicula.getDetalle());
+		    
+			// Como el Detalle ya tiene id, ya podemos guardar la pelicula
+			servicePeliculas.insertar(pelicula);
+			attributes.addFlashAttribute("msg", "Los datos de la pelicula fueron guardados!");
+				
+			//return "redirect:/peliculas/index";
+			return "redirect:/peliculas/indexPaginate";	
 		}
 		
 		@GetMapping(value="/edit/{id}")

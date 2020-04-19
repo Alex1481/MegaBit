@@ -2,8 +2,18 @@ package michael.dev.app.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Banners")
 public class Banner {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String titulo;
 	private Date fecha; // Fecha de Publicacion del Banner
@@ -17,7 +27,7 @@ public class Banner {
 		this.fecha = new Date(); // Por default, la fecha del sistema
 		this.estatus="Activo"; // Por default el banner esta activo
 	}
-
+	
 	public int getId() {
 		return id;
 	}
