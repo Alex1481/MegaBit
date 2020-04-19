@@ -15,8 +15,10 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="#">Acerca</a></li>
 				<li><a href="${urlRoot}peliculas/index">Peliculas</a></li>
+            	<li><a href="${urlRoot}noticias/index">Noticias</a></li>
+            	<li><a href="${urlRoot}banners/index">Banner</a></li>             
+            	<li><a href="${urlRoot}about">Acerca</a></li>
 			</ul>
 
 			<!-- menú del lado derecho -->

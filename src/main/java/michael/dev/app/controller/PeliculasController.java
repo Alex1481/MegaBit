@@ -15,6 +15,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,7 +47,7 @@ public class PeliculasController {
 		
 		@GetMapping("/create")
 		public String crear(@ModelAttribute Pelicula pelicula, Model model) {
-			model.addAttribute("generos", servicePeliculas.buscarGeneros());
+		
 			return "peliculas/formPelicula";
 		}
 		
@@ -72,6 +73,33 @@ public class PeliculasController {
 			servicePeliculas.insertar(pelicula);	
 	    	attributes.addFlashAttribute("mensaje", "La Pelicula fue guardada con Éxito");		
 			return "redirect:/peliculas/index";
+		}
+		
+		@GetMapping(value="/edit/{id}")
+		public String editar(@PathVariable("id") int idPelicula, Model model) {
+			Pelicula pelicula = servicePeliculas.buscarPorId(idPelicula);
+			model.addAttribute("pelicula", pelicula);
+			
+			return "peliculas/formPelicula";
+		}
+		
+		@GetMapping(value="/delete/{id}")
+		public String eliminar(@PathVariable("id") int idPelicula, RedirectAttributes attributes) {
+			
+			Pelicula pelicula = servicePeliculas.buscarPorId(idPelicula);
+			
+			// Primero elimina la pelicula
+			servicePeliculas.eliminar(idPelicula);
+			//Despues elimina los detalles
+			serviceDetalles.eliminar(pelicula.getDetalle().getId());
+			
+			attributes.addFlashAttribute("mensaje", "La Pelicula fue Eliminada");
+			return "redirect:/peliculas/index";
+		}
+		
+		@ModelAttribute("generos")
+		public List<String> getGeneros(){
+			return servicePeliculas.buscarGeneros();
 		}
 		
 		@InitBinder

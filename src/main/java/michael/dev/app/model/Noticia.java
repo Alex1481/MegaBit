@@ -21,7 +21,6 @@ public class Noticia {
 	private String estatus;
 	
 	public Noticia(){
-		System.out.println("Constructor Noticia");
 		this.fecha = new Date();
 		this.estatus="Activa";
 	}
