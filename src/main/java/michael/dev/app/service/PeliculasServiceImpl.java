@@ -4,10 +4,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
-import org.springframework.stereotype.Service;
 import michael.dev.app.model.Pelicula;
 
-@Service
+//@Service
 public class PeliculasServiceImpl implements IPeliculasService {
 
 	private List<Pelicula> lista = null;

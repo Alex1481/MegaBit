@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import michael.dev.app.model.Pelicula;
+import michael.dev.app.service.IDetallesService;
 import michael.dev.app.service.IPeliculasService;
 import michael.dev.app.util.Utileria;
 
@@ -30,6 +31,8 @@ import michael.dev.app.util.Utileria;
 @RequestMapping("/peliculas")
 public class PeliculasController {
 
+		@Autowired
+		private IDetallesService serviceDetalles;
 		
 		@Autowired
 		private IPeliculasService servicePeliculas;
@@ -62,8 +65,12 @@ public class PeliculasController {
 				pelicula.setImagen(nombreImagen);
 			}
 			
+			System.out.println("Antes" + pelicula.getDetalle());
+			serviceDetalles.insertar(pelicula.getDetalle());
+			System.out.println("Despues" + pelicula.getDetalle());
+			
 			servicePeliculas.insertar(pelicula);	
-	    	attributes.addFlashAttribute("mensaje", "El registro fue guardado");		
+	    	attributes.addFlashAttribute("mensaje", "La Pelicula fue guardada con Éxito");		
 			return "redirect:/peliculas/index";
 		}
 		
