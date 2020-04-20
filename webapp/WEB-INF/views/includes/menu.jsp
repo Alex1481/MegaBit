@@ -4,16 +4,11 @@
 <spring:url value="/" var="urlRoot" />
 <!-- Fixed navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
-
-
-
 	<div class="container">
 	
 	<sec:authorize access="isAnonymous()">
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-				aria-controls="navbar">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 				<span class="sr-only">Toggle navigation</span> 
 				<span class="icon-bar"></span> 
 				<span class="icon-bar"></span> 
@@ -25,9 +20,10 @@
 			<ul class="nav navbar-nav">
 				<li><a href="${urlRoot}peliculas/index">Peliculas</a></li>
             	<li><a href="${urlRoot}noticias/index">Noticias</a></li>
-            	<li><a href="${urlRoot}banners/index">Banner</a></li>             
+            	<li><a href="${urlRoot}banners/index">Banner</a></li> 
+            	<li><a href="${urlRoot}usuarios/create">Crear Usuario</a></li>             
             	<li><a href="${urlRoot}about">Acerca</a></li>
-            	<li><a href="${urlRoot}login">Salir</a></li>
+            	<li><a href="${urlRoot}admin/logout">Salir</a></li>	
 			</ul>
 
 			<!-- menú del lado derecho -->

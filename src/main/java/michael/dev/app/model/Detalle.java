@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Detalles")
+@Table(name = "Detalles")
 public class Detalle {
 
 	@Id
@@ -16,7 +16,7 @@ public class Detalle {
 	private String trailer;
 	
 	public Detalle() {
-		//System.out.println("Constructor Detalle");
+		
 	}
 
 	public int getId() {
