@@ -17,9 +17,8 @@ import michael.dev.app.model.Noticia;
 import michael.dev.app.service.INoticiasService;
 
 @Controller
-@RequestMapping("/noticias")
+@RequestMapping(value = "/noticias")
 public class NoticiasController {
-
 
 	// Inyectamos una instancia desde nuestro Root ApplicationContext
 	@Autowired

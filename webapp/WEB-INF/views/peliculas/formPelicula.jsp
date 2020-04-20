@@ -12,11 +12,10 @@
 <title>Creacion de Peliculas</title>
 <spring:url value="/resources" var="urlPublic" />
 <spring:url value="/peliculas/save" var="urlForm" />
-<link href="${urlPublic}/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
+
+<link href="${urlPublic}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="${urlPublic}/bootstrap/css/theme.css" rel="stylesheet">
-<link rel="stylesheet"
-	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 </head>
 
@@ -43,7 +42,6 @@
 
 		</div>
 
-		${pelicula}
 		<form:form action="${urlForm}" method="post" enctype="multipart/form-data" modelAttribute="pelicula">
 		
 		

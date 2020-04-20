@@ -3,30 +3,30 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Creacion de Promociones</title>    
-	<spring:url value="/resources" var="urlPublic"></spring:url>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">		
+	<title>Creacion de Promoción</title>
+	<spring:url value="/resources" var="urlPublic" />
 	<spring:url value="/noticias/save" var="urlForm" />
-    <link href="${urlPublic}/bootstrap/css/bootstrap.min.css" rel="stylesheet">   
-    <link href="${urlPublic}/bootstrap/css/theme.css" rel="stylesheet">
+	
+	<link href="${urlPublic}/bootstrap/css/bootstrap.min.css" rel="stylesheet">	
+	<link href="${urlPublic}/bootstrap/css/theme.css" rel="stylesheet">
+	
+	</head>
 
-  </head>
+<body>
 
-  <body>
+	<jsp:include page="../includes/menu.jsp"></jsp:include>
+	
+	<div class="container theme-showcase" role="main">
 
-    <jsp:include page="../includes/menu.jsp"></jsp:include>
+		<h3 class="blog-title"><span class="label label-success">Datos de la Promoción</span></h3>
 
-    <div class="container theme-showcase" role="main">
-
-      <h3 class="blog-title"><span class="label label-success">Datos de la Promoción</span></h3>
-
-	  <spring:url value="/noticias/save" var="urlForm"></spring:url>	
-      <form:form action="${urlForm}" method="POST" modelAttribute="noticia" >    
+		<form:form action="${urlForm}" method="POST" modelAttribute="noticia" >    
         <div class="row">         
           <div class="col-sm-6">
             <div class="form-group">
@@ -37,7 +37,7 @@
           </div>
           <div class="col-sm-3">
             <div class="form-group">
-              <label for="estatus">Estado</label>             
+              <label for="estatus">Estatus</label>             
               <form:select id="estatus" path="estatus" class="form-control">
                 <form:option value="Activa">Activa</form:option>
                 <form:option value="Inactiva">Inactiva</form:option>                
@@ -56,19 +56,19 @@
         <button type="submit" class="btn btn-danger" >Guardar</button>
       </form:form>
 
-      <hr class="featurette-divider">
+		<hr class="featurette-divider">
 
-      <jsp:include page="../includes/footer.jsp"></jsp:include>
+      <jsp:include page="../includes/footer.jsp"></jsp:include>		
 
-    </div> <!-- /container -->
+	</div> <!-- /container -->
 
-    <!-- Bootstrap core JavaScript
+	<!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
-    <script src="${urlPublic}/bootstrap/js/bootstrap.min.js"></script> 
-    <script src="${urlPublic}/tinymce/tinymce.min.js"></script>
-    <script>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="${urlPublic}/bootstrap/js/bootstrap.min.js"></script>
+	<script src="${urlPublic}/tinymce/tinymce.min.js"></script>
+   <script>
         tinymce.init({
           selector: '#detalle',
           plugins: "textcolor, table lists code",
@@ -76,5 +76,5 @@
                     | bullist numlist outdent indent | forecolor backcolor table code"
         });
    </script>
-  </body>
+</body>
 </html>

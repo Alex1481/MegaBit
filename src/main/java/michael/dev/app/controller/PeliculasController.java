@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,7 +29,7 @@ import michael.dev.app.util.Utileria;
 
 
 @Controller
-@RequestMapping("/peliculas")
+@RequestMapping(value = "/peliculas")
 public class PeliculasController {
 
 		@Autowired
@@ -47,12 +45,12 @@ public class PeliculasController {
 			return "peliculas/listPeliculas";
 		}
 		
-		@GetMapping(value = "/indexPaginate")
-		public String mostrarIndexPaginado(Model model, Pageable page) {
-			Page<Pelicula> lista = servicePeliculas.buscarTodas(page);
-			model.addAttribute("peliculas", lista);
-			return "peliculas/listPeliculas";
-		}
+	/*
+	 * @GetMapping(value = "/indexPaginate") public String
+	 * mostrarIndexPaginado(Model model, Pageable page) { Page<Pelicula> lista =
+	 * servicePeliculas.buscarTodas(page); model.addAttribute("peliculas", lista);
+	 * return "peliculas/listPeliculas"; }
+	 */
 		
 		@GetMapping("/create")
 		public String crear(@ModelAttribute Pelicula pelicula, Model model) {
@@ -85,7 +83,7 @@ public class PeliculasController {
 			attributes.addFlashAttribute("msg", "Los datos de la pelicula fueron guardados!");
 				
 			//return "redirect:/peliculas/index";
-			return "redirect:/peliculas/indexPaginate";	
+			return "redirect:/peliculas/index";	
 		}
 		
 		@GetMapping(value="/edit/{id}")

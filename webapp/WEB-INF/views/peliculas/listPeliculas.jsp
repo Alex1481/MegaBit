@@ -67,6 +67,7 @@
             </tbody>
         </table>
       </div>
+      
           
       <hr class="featurette-divider">
 
