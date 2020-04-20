@@ -10,10 +10,10 @@
 
    <http auto-config="true">
 		<!-- Declaramos todos los recursos que estaran protegidos -->
-		<intercept-url pattern="/peliculas/*" access="hasAnyAuthority('EDITOR','GERENTE')" />
-		<intercept-url pattern="/horarios/*" access="hasAnyAuthority('EDITOR','GERENTE')" />
-		<intercept-url pattern="/usuarios/*" access="hasAnyAuthority('GERENTE')" />
-		<intercept-url pattern="/banners/*" access="hasAnyAuthority('GERENTE')" />
+		<intercept-url pattern="/peliculas/*" access="hasAnyAuthority('VENDEDOR','ADMINISTRADOR')" />
+		<intercept-url pattern="/noticias/*" access="hasAnyAuthority('ADMINISTRADOR')" />
+		<intercept-url pattern="/usuarios/*" access="hasAnyAuthority('ADMINISTRADOR')" />
+		<intercept-url pattern="/banners/*" access="hasAnyAuthority('ADMINISTRADOR')" />
 		
 		<form-login login-page="/formLogin" default-target-url="/admin/index"/>
 		
@@ -23,8 +23,8 @@
 
       <authentication-provider>
 		<user-service>
-		  <user name="paty" password="{noop}123" authorities="EDITOR" />		  
-		  <user name="michael" password="{noop}123" authorities="GERENTE" />  
+		  <user name="selvin" password="{noop}123" authorities="VENDEDOR" />		  
+		  <user name="michael" password="{noop}123" authorities="ADMINISTRADOR" />  
 		</user-service>
       </authentication-provider>
 
