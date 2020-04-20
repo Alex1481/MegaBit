@@ -41,9 +41,9 @@ public class UsuariosController {
 		System.out.println("Usuario: " + usuario);
 		System.out.println("Perfil: " + perfil);
 		
-		String tmpPwd = usuario.getPass();
-		String encriptado = encoder.encode(tmpPwd);
-		usuario.setPass(encriptado);
+		String tmpPass = usuario.getPwd();
+		String encriptado = encoder.encode(tmpPass);
+		usuario.setPwd(encriptado);
 		usuario.setActivo(1);
 		serviceUsuarios.guardar(usuario);
 		
@@ -52,12 +52,12 @@ public class UsuariosController {
 		perfilTmp.setPerfil(perfil);
 		servicePerfiles.guardar(perfilTmp);
 		
-		return"redirect:/usuario/index";
+		return"redirect:/usuarios/index";
 	}
 	
 	@GetMapping("/demo-bcrypt")
 	public String pruebaBCrypt() {
-		String password="123";
+		String password="michael123";
 		String encriptado=encoder.encode(password);
 		System.out.println("password encriptado: " + encriptado);
 		

@@ -14,16 +14,12 @@
 				<span class="icon-bar"></span> 
 				<span class="icon-bar"></span> 
 			</button>
-			<a class="navbar-brand" href="${urlRoot}admin/index">MEGA BIT | Administración</a>
+			<a class="navbar-brand" href="${urlRoot}">MEGA BIT | Bienvenid@</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
-			<ul class="nav navbar-nav">
-				<li><a href="${urlRoot}peliculas/index">Peliculas</a></li>
-            	<li><a href="${urlRoot}noticias/index">Noticias</a></li>
-            	<li><a href="${urlRoot}banners/index">Banner</a></li> 
-            	<li><a href="${urlRoot}usuarios/create">Crear Usuario</a></li>             
+			<ul class="nav navbar-nav">            
             	<li><a href="${urlRoot}about">Acerca</a></li>
-            	<li><a href="${urlRoot}admin/logout">Salir</a></li>	
+            	<li><a href="${urlRoot}usuarios/create">Crear Usuario</a></li>
 			</ul>
 
 			<!-- menú del lado derecho -->
@@ -52,7 +48,6 @@
 			<ul class="nav navbar-nav">
 				<li><a href="${urlRoot}peliculas/index">Peliculas</a></li>
             	<li><a href="${urlRoot}about">Acerca</a></li>
-            	<li><a href="${urlRoot}login">Salir</a></li>
 			</ul>
 
 			<!-- menú del lado derecho -->
@@ -80,9 +75,9 @@
 			<ul class="nav navbar-nav">
 				<li><a href="${urlRoot}peliculas/index">Peliculas</a></li>
             	<li><a href="${urlRoot}noticias/index">Noticias</a></li>
-            	<li><a href="${urlRoot}banners/index">Banner</a></li>             
+            	<li><a href="${urlRoot}banners/index">Banner</a></li> 
+            	<li><a href="${urlRoot}usuarios/create">Crear Usuario</a></li>            
             	<li><a href="${urlRoot}about">Acerca</a></li>
-            	<li><a href="${urlRoot}login">Salir</a></li>
 			</ul>
 
 			<!-- menú del lado derecho -->

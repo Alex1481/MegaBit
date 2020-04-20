@@ -9,12 +9,12 @@
      http://www.springframework.org/schema/security/spring-security.xsd">
 
    <http auto-config="true">
-		<!-- Declaramos todos los recursos que estaran protegidos 
+		<!-- Declaramos todos los recursos que estaran protegidos <intercept-url pattern="/usuarios/*" access="hasAnyAuthority('ADMINISTRADOR')" /> -->
 		<intercept-url pattern="/peliculas/*" access="hasAnyAuthority('VENDEDOR','ADMINISTRADOR')" />
 		<intercept-url pattern="/noticias/*" access="hasAnyAuthority('ADMINISTRADOR')" />
-		<intercept-url pattern="/usuarios/*" access="hasAnyAuthority('ADMINISTRADOR')" />
+		
 		<intercept-url pattern="/banners/*" access="hasAnyAuthority('ADMINISTRADOR')" />
-		-->
+		
 		<form-login login-page="/formLogin" default-target-url="/admin/index" />
 		
    </http>
@@ -23,7 +23,7 @@
 			<authentication-provider>
 				<password-encoder ref="passwordEncoder"/>
 				<jdbc-user-service data-source-ref="dataSource"
-				users-by-username-query="select cuenta,pass,activo from Usuarios where cuenta = ?"
+				users-by-username-query="select cuenta,pwd,activo from Usuarios where cuenta = ?"
 				authorities-by-username-query="select cuenta,perfil from Perfiles where cuenta = ?" />
 			</authentication-provider>
 		</authentication-manager>

@@ -46,7 +46,7 @@
 					
 					<div class="col-sm-3">
 						<div class="form-group">
-							<label for="pass">Password</label>             
+							<label for="pwd">Password</label>             
 							<form:input type="password" class="form-control" path="pwd" id="pwd" required="required"/>
 						</div>  
 					</div>

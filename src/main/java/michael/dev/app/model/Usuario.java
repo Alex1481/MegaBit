@@ -14,54 +14,45 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String cuenta;
-	private String pass;
+	private String pwd;
 	private int activo;
 	private String telefono;
-
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	public String getCuenta() {
 		return cuenta;
 	}
-
 	public void setCuenta(String cuenta) {
 		this.cuenta = cuenta;
 	}
-
-	public String getPass() {
-		return pass;
+	public String getPwd() {
+		return pwd;
 	}
-
-	public void setPass(String pass) {
-		this.pass = pass;
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
-
 	public int getActivo() {
 		return activo;
 	}
-
 	public void setActivo(int activo) {
 		this.activo = activo;
 	}
-
 	public String getTelefono() {
 		return telefono;
 	}
-
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", cuenta=" + cuenta + ", pass=" + pass + ", activo=" + activo + ", telefono="
+		return "Usuario [id=" + id + ", cuenta=" + cuenta + ", pwd=" + pwd + ", activo=" + activo + ", telefono="
 				+ telefono + "]";
 	}
+
+
 
 }
