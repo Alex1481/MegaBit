@@ -8,14 +8,19 @@
      http://www.springframework.org/schema/security 
      http://www.springframework.org/schema/security/spring-security.xsd">
 
-   <http />
+   <http auto-config="true">
+		<!--Declaramos todos los recursos que estaran protegidos -->
+		<intercept-url pattern="/peliculas/*" access="hasAnyAuthority('EDITOR','GERENTE')" />
+		<intercept-url pattern="/noticias/*" access="hasAnyAuthority('EDITOR', 'GERENTE')" />
+		<intercept-url pattern="/banners/*" access="hasAnyAuthority('GERENTE')" />
+	</http>
 
    <authentication-manager>
 
       <authentication-provider>
 		<user-service>
-		  <user name="luis" password="{noop}luis123" authorities="EDITOR" />		  
-		  <user name="michael" password="{noop}michael123" authorities="GERENTE" />  
+		  <user name="paty" password="{noop}123" authorities="EDITOR" />		  
+		  <user name="michael" password="{noop}123" authorities="GERENTE" />  
 		</user-service>
       </authentication-provider>
 
