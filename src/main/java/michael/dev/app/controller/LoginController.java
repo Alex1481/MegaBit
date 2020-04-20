@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value="/admin")
 public class LoginController {
 
-	@GetMapping(value= "/logout")
-	public String logout(HttpServletRequest request){
-	SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
-	logoutHandler.logout(request, null, null);
-	return "redirect:/login";
+	@GetMapping(value = "/logout")
+	public String logout(HttpServletRequest request) {
+		SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
+		logoutHandler.logout(request, null, null);
+		return "redirect:/formLogin";
 	}
 }

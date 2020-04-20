@@ -9,13 +9,15 @@
      http://www.springframework.org/schema/security/spring-security.xsd">
 
    <http auto-config="true">
-		<!--Declaramos todos los recursos que estaran protegidos -->
+		<!-- Declaramos todos los recursos que estaran protegidos -->
 		<intercept-url pattern="/peliculas/*" access="hasAnyAuthority('EDITOR','GERENTE')" />
-		<intercept-url pattern="/noticias/*" access="hasAnyAuthority('EDITOR', 'GERENTE')" />
+		<intercept-url pattern="/horarios/*" access="hasAnyAuthority('EDITOR','GERENTE')" />
+		<intercept-url pattern="/usuarios/*" access="hasAnyAuthority('GERENTE')" />
 		<intercept-url pattern="/banners/*" access="hasAnyAuthority('GERENTE')" />
 		
-		<form-login login-page="/formLogin"/>
-	</http>
+		<form-login login-page="/formLogin" default-target-url="/admin/index"/>
+		
+   </http>
 
    <authentication-manager>
 
