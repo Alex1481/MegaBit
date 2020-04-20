@@ -15,7 +15,7 @@
 		<intercept-url pattern="/usuarios/*" access="hasAnyAuthority('ADMINISTRADOR')" />
 		<intercept-url pattern="/banners/*" access="hasAnyAuthority('ADMINISTRADOR')" />
 		-->
-		<form-login login-page="/formLogin" default-target-url="/admin/index"/>
+		<form-login login-page="/formLogin" default-target-url="/admin/index" />
 		
    </http>
    <!--Autenticacion desde una base de datos personalizada -->
