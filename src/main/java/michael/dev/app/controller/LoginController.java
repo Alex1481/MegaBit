@@ -8,13 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping(value="/admin")
 public class LoginController {
 
-	@GetMapping(value="/logout")
+	@GetMapping(value= "/logout")
 	public String logout(HttpServletRequest request){
-	SecurityContextLogoutHandler logoutHandler =
-	new SecurityContextLogoutHandler();
+	SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
 	logoutHandler.logout(request, null, null);
 	return "redirect:/login";
 	}

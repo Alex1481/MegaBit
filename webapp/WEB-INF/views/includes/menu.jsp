@@ -20,11 +20,14 @@
             	<li><a href="${urlRoot}noticias/index">Noticias</a></li>
             	<li><a href="${urlRoot}banners/index">Banner</a></li>             
             	<li><a href="${urlRoot}about">Acerca</a></li>
+            	<li><a href="${urlRoot}login">Salir</a></li>
 			</ul>
 
 			<!-- menú del lado derecho -->
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#">Login</a></li>
+				<!-- <li><a href="${urlRoot}admin/logout">Salir</a></li> -->
+				<li><a href="${urlRoot}login">Salir</a></li>				
 			</ul>
 		</div>
 		<!--/.nav-collapse -->
