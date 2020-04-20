@@ -19,6 +19,16 @@
 		
    </http>
 
+
+		<!--Autenticacion desde una base de datos -->
+		<authentication-manager >
+			<authentication-provider>
+				<jdbc-user-service data-source-ref="dataSource" />
+			</authentication-provider>
+		</authentication-manager>
+		
+	<!-- DECLARACIÓN DE USUARIOS EN MEMORIA  -->
+	<!--  
    <authentication-manager>
 
       <authentication-provider>
@@ -29,6 +39,7 @@
       </authentication-provider>
 
    </authentication-manager>
+   -->
    
    <b:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 
