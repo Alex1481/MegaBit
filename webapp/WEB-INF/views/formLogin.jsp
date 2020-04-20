@@ -35,13 +35,13 @@
 				<h4 class="form-signin-heading" style="color:red">Acceso denegado</h4>
 			</c:if>
 	   	       
-			<h3 class="form-signin-heading">CineSite | Administracion</h3>        
+			<h3 class="form-signin-heading">MEGA BIT | Iniciar Sesión</h3>        
 			<label for="username" class="sr-only">Usuario</label>
 			<input type="text" id="username" name="username" class="form-control" placeholder="Usuario" required autofocus>
 			<label for="password" class="sr-only">Contraseña</label>
 			<input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-			<button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
 	  </form>
 
 	</div> <!-- /container -->
