@@ -36,12 +36,12 @@ public class PeliculasServiceJPA implements IPeliculasService{
 	}
 
 	@Override
-	public List<Pelicula> buscarTodas() {
+	public List<Pelicula> buscarTodas() {		
 		return peliculasRepo.findAll();		
 	}
 	
 	
-	
+
 
 	@Override
 	public List<String> buscarGeneros() {
